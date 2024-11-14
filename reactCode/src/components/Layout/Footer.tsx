@@ -8,14 +8,14 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">About</h3>
             <p className="mt-2 text-sm text-gray-500">
-              Supporting Year 7 students in their Mathematics and English studies through interactive learning and assessment.
+              Supporting Year 7 students in their mathematical journey through interactive learning and assessment.
             </p>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">Resources</h3>
             <ul className="mt-2 space-y-2">
               <li>
-                <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Study Tips</a>
+                <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Math Tips</a>
               </li>
               <li>
                 <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Practice Tests</a>
@@ -39,7 +39,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-gray-200 pt-6">
           <p className="text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} Year 7 Learning Hub. All rights reserved.
+            © {new Date().getFullYear()} Year 7 Mathematics. All rights reserved.
           </p>
         </div>
       </div>

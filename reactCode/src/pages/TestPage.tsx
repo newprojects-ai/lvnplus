@@ -1,43 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Clock, AlertCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Clock, AlertCircle, Send } from 'lucide-react';
+import 'katex/dist/katex.min.css';
+import { InlineMath } from 'react-katex';
+
+interface Question {
+  id: number;
+  latex: string;
+  answer: string;
+}
+
+const questions: Question[] = [
+  { id: 1, latex: '11.56 - 6.41', answer: '' },
+  { id: 2, latex: '3.2 \\times 0.8', answer: '' },
+  { id: 3, latex: '7.5 \\times 0.04', answer: '' },
+  { id: 4, latex: '\\frac{4.56}{1.2}', answer: '' },
+  { id: 5, latex: '\\frac{0.75}{0.25}', answer: '' },
+  { id: 6, latex: '\\frac{2}{3} + \\frac{4}{9}', answer: '' },
+  { id: 7, latex: '\\frac{3}{5} - \\frac{1}{4}', answer: '' },
+  { id: 8, latex: '\\frac{3}{8} \\times \\frac{1}{4}', answer: '' },
+  { id: 9, latex: '\\frac{3}{4} \\div \\frac{1}{3}', answer: '' },
+  { id: 10, latex: '\\text{LCM of 12 and 18}', answer: '' }
+];
 
 export function TestPage() {
-  const { subject, testId } = useParams();
   const navigate = useNavigate();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+  const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Mock test data - in a real app, this would come from an API
-  const test = {
-    id: testId,
-    subject: subject,
-    title: subject === 'mathematics' ? 'Numbers and Operations' : 'Grammar and Punctuation',
-    timeLimit: 15,
-    questions: [
-      {
-        id: '1',
-        question: subject === 'mathematics' 
-          ? 'What is 15% of 200?' 
-          : 'Which sentence uses the correct form of "their"?',
-        options: subject === 'mathematics'
-          ? ['20', '30', '40', '50']
-          : [
-              'They\'re going to the store.',
-              'Their going to the store.',
-              'There going to the store.',
-              'Theyre going to the store.'
-            ],
-        correctAnswer: subject === 'mathematics' ? '30' : 'They\'re going to the store.'
-      },
-      // Add more questions as needed
-    ]
-  };
-
   useEffect(() => {
-    setTimeLeft(test.timeLimit * 60);
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -52,15 +44,16 @@ export function TestPage() {
     return () => clearInterval(timer);
   }, []);
 
-  const handleAnswer = (answer: string) => {
-    const newAnswers = [...answers];
-    newAnswers[currentQuestion] = answer;
-    setAnswers(newAnswers);
+  const handleAnswerChange = (questionId: number, value: string) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [questionId]: value
+    }));
   };
 
   const handleSubmit = () => {
     setIsSubmitted(true);
-    // In a real app, you would send the results to an API
+    // In a real app, you would send the answers to an API
     setTimeout(() => {
       navigate('/progress');
     }, 3000);
@@ -71,10 +64,6 @@ export function TestPage() {
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
-
-  if (!test) {
-    return <div>Loading...</div>;
-  }
 
   if (isSubmitted) {
     return (
@@ -89,66 +78,45 @@ export function TestPage() {
     <div className="max-w-3xl mx-auto px-4 py-8">
       <div className="bg-white rounded-lg shadow-md p-6">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">{test.title}</h1>
+          <h1 className="text-2xl font-bold">Mathematics Test</h1>
           <div className="flex items-center space-x-2 text-gray-600">
             <Clock className="h-5 w-5" />
             <span className="font-medium">{formatTime(timeLeft)}</span>
           </div>
         </div>
 
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-medium">
-              Question {currentQuestion + 1} of {test.questions.length}
-            </h2>
-            <span className="text-sm text-gray-500">
-              {answers[currentQuestion] ? 'Answered' : 'Not answered'}
-            </span>
-          </div>
-
-          <p className="text-lg mb-6">{test.questions[currentQuestion].question}</p>
-
-          <div className="space-y-4">
-            {test.questions[currentQuestion].options?.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => handleAnswer(option)}
-                className={`w-full text-left p-4 rounded-lg border ${
-                  answers[currentQuestion] === option
-                    ? 'border-indigo-600 bg-indigo-50'
-                    : 'border-gray-200 hover:border-gray-300'
-                }`}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
+        <div className="space-y-8">
+          {questions.map((question) => (
+            <div key={question.id} className="p-4 border rounded-lg">
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex items-center space-x-4">
+                  <span className="font-medium text-gray-600">Question {question.id}</span>
+                  <div className="text-xl">
+                    <InlineMath math={question.latex} />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4">
+                <input
+                  type="text"
+                  value={answers[question.id] || ''}
+                  onChange={(e) => handleAnswerChange(question.id, e.target.value)}
+                  placeholder="Enter your answer"
+                  className="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="mt-8 flex justify-end">
           <button
-            onClick={() => setCurrentQuestion((prev) => Math.max(0, prev - 1))}
-            disabled={currentQuestion === 0}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 disabled:opacity-50"
+            onClick={handleSubmit}
+            className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 flex items-center space-x-2"
           >
-            Previous
+            <span>Submit Test</span>
+            <Send className="h-4 w-4" />
           </button>
-          
-          {currentQuestion === test.questions.length - 1 ? (
-            <button
-              onClick={handleSubmit}
-              className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
-            >
-              Submit Test
-            </button>
-          ) : (
-            <button
-              onClick={() => setCurrentQuestion((prev) => Math.min(test.questions.length - 1, prev + 1))}
-              className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
-            >
-              Next
-            </button>
-          )}
         </div>
       </div>
     </div>
