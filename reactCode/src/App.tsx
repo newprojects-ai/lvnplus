@@ -12,6 +12,8 @@ import { Unauthorized } from './pages/Unauthorized';
 import { ProtectedRoute } from './components/Auth/ProtectedRoute';
 import { PracticeTests } from './pages/PracticeTests';
 import { TopicTests } from './pages/TopicTests';
+import { MixedTestConfig } from './pages/MixedTestConfig';
+import { MentalArithmeticConfig } from './pages/MentalArithmeticConfig';
 
 function App() {
   return (
@@ -45,6 +47,22 @@ function App() {
                 element={
                   <ProtectedRoute allowedRoles={['student', 'tutor', 'administrator']}>
                     <TopicTests />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/mathematics/tests/mixed"
+                element={
+                  <ProtectedRoute allowedRoles={['student', 'tutor', 'administrator']}>
+                    <MixedTestConfig />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/mathematics/tests/mental"
+                element={
+                  <ProtectedRoute allowedRoles={['student', 'tutor', 'administrator']}>
+                    <MentalArithmeticConfig />
                   </ProtectedRoute>
                 }
               />

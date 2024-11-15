@@ -1,0 +1,72 @@
+You are an expert in creating 11+ level Math questions for the **CSSE exam**. Your task is to generate realistic, curriculum-aligned multiple-choice questions on the following Math topics. Include the question, four answer options, and indicate the correct answer. Where possible, include an explanation of the correct answer to help students understand the reasoning behind it.
+
+---
+
+#### **Question Requirements**
+
+1. **Topics**:
+   - **Algebra**:
+     - Linear Equations
+     - Quadratic Equations
+   - **Geometry**:
+     - Shapes and Angles
+     - Perimeter and Area
+
+2. **Difficulty Levels**:
+   - Generate questions of varying difficulty:
+     - **Easy (Level 0-1)**: Basic conceptual questions.
+     - **Moderate (Level 2-3)**: Problem-solving requiring intermediate steps.
+     - **Challenging (Level 4-5)**: Advanced questions requiring critical thinking or multi-step solutions.
+
+3. **Question Format**:
+   - **Multiple-choice**:
+     - Provide 4 answer options.
+     - Indicate the correct answer.
+   - Include calculations or diagrams where applicable.
+   - Use clear language and values appropriate for 11+ students.
+
+4. **Example Questions**:
+   - **Algebra (Linear Equations)**:
+     - Question: Solve for \( x \): \( 3x + 4 = 19 \).
+     - Options:
+       1. \( x = 7 \) *(Correct Answer)*
+       2. \( x = 6 \)
+       3. \( x = 5 \)
+       4. \( x = 8 \)
+     - Explanation: Subtract 4 from both sides, then divide by 3 to find \( x = 7 \).
+
+   - **Geometry (Perimeter and Area)**:
+     - Question: What is the area of a rectangle with a length of 8 cm and a width of 5 cm?
+     - Options:
+       1. \( 13 \, \text{cm}^2 \)
+       2. \( 30 \, \text{cm}^2 \)
+       3. \( 40 \, \text{cm}^2 \) *(Correct Answer)*
+       4. \( 50 \, \text{cm}^2 \)
+     - Explanation: Multiply length \( 8 \, \text{cm} \) by width \( 5 \, \text{cm} \) to get \( 40 \, \text{cm}^2 \).
+
+---
+
+#### **Metadata for Each Question**
+Please include the following metadata with each question:
+- **Topic**: The specific topic, e.g., "Algebra: Linear Equations."
+- **Difficulty Level**: A number between 0 (Very Easy) and 5 (Very Hard).
+- **Correct Answer**: Clearly marked.
+- **Explanation**: A brief step-by-step solution for the correct answer.
+
+Give me the output in 
+Mathematical notation which can be used by React libraries to render them on the screen.
+In JSON Format
+
+Give me 25 questions for each of the sub-topics
+---
+
+#### **Prompt Examples for ChatGPT-4**
+
+1. **Linear Equations**:
+   *"Generate 5 multiple-choice Math questions for the topic 'Algebra: Linear Equations.' Ensure a mix of easy, moderate, and challenging questions. Include 4 answer options for each question, mark the correct answer, and provide a brief explanation for the correct answer."*
+
+2. **Perimeter and Area**:
+   *"Create 3 geometry questions for the topic 'Perimeter and Area' focusing on rectangles, triangles, and circles. Each question should have 4 options, with varying difficulty levels. Indicate the correct answer and include a short explanation for the calculation."*
+
+3. **Shapes and Angles**:
+   *"Write 3 questions about angles in a triangle. Ensure the questions test different levels of understanding, from identifying basic properties to solving for unknown angles. Include 4 answer choices for each and explain the correct answer briefly."*

@@ -1,0 +1,78 @@
+Here’s an updated **prompt** tailored for generating questions for the **CSSE exam** using ChatGPT-4. The prompt focuses on creating realistic and curriculum-aligned questions for the revised sections: **Reading Comprehension**, **Creative Writing**, and **Math**.
+
+---
+
+### **Question Generation Prompt for CSSE Exam**
+
+> You are an expert in creating 11+ exam questions for the **CSSE exam**. Your task is to generate realistic, curriculum-aligned questions for the following subjects and topics. Include the question, multiple-choice options (if applicable), and the correct answer. Where appropriate, provide explanations for the answers to help students understand.
+
+#### **Question Requirements**
+
+1. **Subject**: Math
+   - **Topics**:
+     - Algebra: Linear Equations, Quadratic Equations.
+     - Geometry: Shapes and Angles, Perimeter and Area.
+   - **Format**: Multiple-choice (4 options).
+   - **Difficulty Levels**:
+     - Easy, Moderate, and Challenging.
+   - **Example**:
+     - Question: Solve for \( x \): \( 2x + 5 = 15 \).
+     - Options:
+       1. \( x = 5 \)
+       2. \( x = 10 \)
+       3. \( x = 7 \)
+       4. \( x = 2 \) *(Correct Answer: \( x = 5 \))*
+
+---
+
+2. **Subject**: English
+   - **Topics**:
+     - Reading Comprehension: Passage Analysis, Inference.
+     - Creative Writing: Story Structure, Argumentative Essays.
+   - **Format**:
+     - **Reading Comprehension**:
+       - Provide a short passage (100–150 words) followed by 3–5 questions (multiple-choice or short answers).
+       - Include inferential, vocabulary-based, and analytical questions.
+     - **Creative Writing**:
+       - Write a short creative writing prompt for a student to develop a story (include the scenario and key elements they must address, such as a setting or conflict).
+   - **Examples**:
+     - **Reading Comprehension**:
+       - *Passage*: "The bright sun shone over the rolling hills, casting long shadows as the day wore on. Farmers worked tirelessly in the fields, their sweat glistening under the unforgiving heat."
+       - Questions:
+         1. What is the tone of the passage? *(Answer: Descriptive)*
+         2. What does "glistening" mean in this context? *(Answer: Shining due to moisture)*
+     - **Creative Writing**:
+       - Prompt: *"Write a story about a child who discovers a hidden room in their school library. Include how they find it, what they discover, and how it changes their perspective about their school."*
+
+---
+
+3. **Question Metadata**:
+   - Tag each question with:
+     - Subject (Math or English).
+     - Topic and Sub-Topic.
+     - Difficulty Level (0 to 5, where 0 = Very Easy and 5 = Very Hard).
+     - Correct Answer (if applicable).
+     - Explanation (optional but encouraged).
+
+
+#### **Tips for Effective Question Generation**
+1. **Ensure Relevance**: Align with the CSSE curriculum by emphasizing reasoning, problem-solving, and creativity.
+2. **Vary Difficulty**: Generate a mix of easy, moderate, and challenging questions to cover a broad range of abilities.
+3. **Clarity**: Ensure that each question is concise, unambiguous, and understandable for an 11+ student.
+4. **Balance**: Include questions that test both factual knowledge and critical thinking skills.
+
+---
+I ask for specific number of questions in the next 
+
+#### **Prompt Example to ChatGPT-4**
+
+*"Generate 5 multiple-choice Math questions for the topic 'Geometry: Perimeter and Area.' Include questions of varying difficulty (Easy, Moderate, Challenging). Provide 4 options for each question, mark the correct answer, and include a brief explanation for the correct answer."*
+
+*"Create a short passage (100–150 words) for a Reading Comprehension exercise. Provide 3 inferential and vocabulary-based questions, with answers. Include at least one question requiring analysis of the passage's tone or mood."*
+
+*"Write a Creative Writing prompt for a story about teamwork in a sports event. Include key elements like conflict, resolution, and character dynamics."*
+
+---
+
+
+
